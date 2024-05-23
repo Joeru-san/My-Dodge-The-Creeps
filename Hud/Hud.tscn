@@ -1,0 +1,165 @@
+[gd_scene load_steps=8 format=3 uid="uid://c32ykqst1f7w6"]
+
+[ext_resource type="Script" path="res://Hud/hud.gd" id="1_p5vf4"]
+[ext_resource type="FontFile" uid="uid://d3h3s6o76vd26" path="res://fonts/Xolonium-Regular.ttf" id="2_nhqbm"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_7pgdx"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_vtau7"]
+device = -1
+keycode = 4194325
+
+[sub_resource type="Shortcut" id="Shortcut_ckc6f"]
+events = [SubResource("InputEventKey_vtau7")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_itdi7"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_cvadm"]
+events = [SubResource("InputEventAction_itdi7")]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_p5vf4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0901961, 0.203922, 0.211765, 0.584314)
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -158.5
+offset_right = 156.5
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_nhqbm")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+custom_minimum_size = Vector2(480, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = -142.5
+offset_right = 239.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_nhqbm")
+theme_override_font_sizes/font_size = 64
+text = "Dodge the creeps!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PauseButton" type="Button" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 160.0
+offset_top = 12.0
+offset_right = 232.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_nhqbm")
+theme_override_font_sizes/font_size = 40
+shortcut = SubResource("Shortcut_ckc6f")
+text = "||"
+icon_alignment = 1
+
+[node name="StartButton" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 100)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -140.0
+offset_right = 100.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_nhqbm")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_cvadm")
+text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="LastScore_label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.442
+anchor_top = 0.089
+anchor_right = 0.442
+anchor_bottom = 0.089
+offset_left = -29.16
+offset_top = -0.0800018
+offset_right = 66.84
+offset_bottom = 22.92
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_nhqbm")
+text = "Last Score:"
+horizontal_alignment = 1
+
+[node name="LastScore" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.575
+anchor_top = 0.089
+anchor_right = 0.575
+anchor_bottom = 0.089
+offset_left = -5.00003
+offset_top = -0.0800018
+offset_right = 35.0
+offset_bottom = 22.92
+theme_override_fonts/font = ExtResource("2_nhqbm")
+text = "0
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PowerUpLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -273.5
+offset_right = 128.0
+offset_bottom = -210.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_nhqbm")
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VirtualJoystick" parent="." instance=ExtResource("3_7pgdx")]
+visible = false
+offset_left = -112.0
+offset_top = -224.0
+offset_right = 112.0
+offset_bottom = -16.0
+joystick_mode = 1
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
+
+[connection signal="pressed" from="PauseButton" to="." method="on_pause_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

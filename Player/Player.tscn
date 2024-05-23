@@ -1,0 +1,86 @@
+[gd_scene load_steps=14 format=3 uid="uid://c8pkii3hmh3a3"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_ujmqu"]
+[ext_resource type="Texture2D" uid="uid://myuuej7yuyi4" path="res://art/playerGrey_up1.png" id="1_wnf7u"]
+[ext_resource type="Texture2D" uid="uid://bq0fqall34yu6" path="res://art/playerDeath1.png" id="2_7prwo"]
+[ext_resource type="Texture2D" uid="uid://41r0esuepoej" path="res://art/playerGrey_up2.png" id="2_mvpxq"]
+[ext_resource type="Texture2D" uid="uid://cod4j1e1unpxq" path="res://art/shield_texture.png" id="2_ynp50"]
+[ext_resource type="Texture2D" uid="uid://c85c1a4ts3gcs" path="res://art/playerDeath2.png" id="3_1e7bl"]
+[ext_resource type="Texture2D" uid="uid://blavlcknht3jp" path="res://art/playerGrey_walk1.png" id="3_ec4jb"]
+[ext_resource type="Texture2D" uid="uid://cntw1qftsdbda" path="res://art/playerDeath3.png" id="4_ex4je"]
+[ext_resource type="Texture2D" uid="uid://cgik51vlkvy32" path="res://art/playerGrey_walk2.png" id="4_m8fdq"]
+[ext_resource type="Texture2D" uid="uid://crjkpqwqhpa44" path="res://art/playerDeath4.png" id="5_14lvg"]
+[ext_resource type="Texture2D" uid="uid://wfip8nbl5noc" path="res://art/playerDeath5.png" id="6_aytdn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_an2v2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7prwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1e7bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ex4je")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_14lvg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_aytdn")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wnf7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mvpxq")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ec4jb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_m8fdq")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wsv6w"]
+radius = 28.0
+height = 70.0
+
+[node name="Player" type="Area2D"]
+position = Vector2(208, 136)
+script = ExtResource("1_ujmqu")
+metadata/_edit_group_ = true
+
+[node name="PowerUpTexture" type="TextureRect" parent="."]
+visible = false
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ynp50")
+expand_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_an2v2")
+animation = &"death"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_wsv6w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
