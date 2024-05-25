@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpxplk0dd4kdu"
-path="res://.godot/imported/T_P5_Dpad_Down_Light.png-aa3a5109fb6da7225015f1f6cb83c9ae.ctex"
+path="res://.godot/imported/Down_Dpad.png-059655cc343c9ef5169f47840180964e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dpad/assets/T_P5_Dpad_Down_Light.png"
-dest_files=["res://.godot/imported/T_P5_Dpad_Down_Light.png-aa3a5109fb6da7225015f1f6cb83c9ae.ctex"]
+source_file="res://Dpad/assets/Down_Dpad.png"
+dest_files=["res://.godot/imported/Down_Dpad.png-059655cc343c9ef5169f47840180964e.ctex"]
 
 [params]
 

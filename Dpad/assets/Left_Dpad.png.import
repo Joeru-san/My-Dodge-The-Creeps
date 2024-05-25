@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv7ljrle07isj"
-path="res://.godot/imported/T_P5_Dpad_UP_Light.png-7732003d77712ad212e6a594b2cd32d7.ctex"
+uid="uid://dfkdpwstcea36"
+path="res://.godot/imported/Left_Dpad.png-85f5eca73f5a61a8590ad1ad6bc15590.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dpad/assets/T_P5_Dpad_UP_Light.png"
-dest_files=["res://.godot/imported/T_P5_Dpad_UP_Light.png-7732003d77712ad212e6a594b2cd32d7.ctex"]
+source_file="res://Dpad/assets/Left_Dpad.png"
+dest_files=["res://.godot/imported/Left_Dpad.png-85f5eca73f5a61a8590ad1ad6bc15590.ctex"]
 
 [params]
 
