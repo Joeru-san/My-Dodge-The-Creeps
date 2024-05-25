@@ -32,7 +32,7 @@ func show_game_over(latest_score):
 	# In questo modo non ci facciamo un nodo in più
 	await get_tree().create_timer(1.0).timeout
 	if OS.has_feature("android") or OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
-		$VirtualJoystick.hide()
+		$Dpad.hide()
 	$PauseButton.hide()
 	$StartButton.show()
 
@@ -52,7 +52,7 @@ func on_pause_button_pressed():
 	
 func _on_start_button_pressed():
 	if OS.has_feature("android") or OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
-		$VirtualJoystick.show()
+		$Dpad.show()
 	$StartButton.hide()
 	$PauseButton.show()
 	$PowerUpLabel.text = ""

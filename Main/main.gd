@@ -22,8 +22,8 @@ func _ready():
 	
 	# Clear all Vector2 points
 	$PowerUpPath.curve.clear_points()
-	$PowerUpPath.curve.add_point(Vector2(2, 0))
-	$PowerUpPath.curve.add_point(Vector2(screen_size.x-2,0))
+	$PowerUpPath.curve.add_point(Vector2(10, 0))
+	$PowerUpPath.curve.add_point(Vector2(screen_size.x-10,0))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -37,7 +37,6 @@ func game_over():
 	$PowerUpTimer.stop()
 	$Player/AnimatedSprite2D.animation = "death"
 	$HUD/PowerUpLabel.text = ""
-	$HUD/VirtualJoystick.hide()
 	get_tree().call_group("mobs", "queue_free")
 	get_tree().call_group("powerup", "queue_free")
 	await get_tree().create_timer(1.0).timeout

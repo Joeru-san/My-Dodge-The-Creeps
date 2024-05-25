@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://mn8yr4v804ww"]
+
+[ext_resource type="Script" path="res://Dpad/Dpad.gd" id="1_6ctoh"]
+[ext_resource type="Texture2D" uid="uid://sfgty6v6foag" path="res://Dpad/assets/T_P5_Dpad_Light.png" id="1_otjp6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_81rfv"]
+radius = 27.5
+height = 70.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l78cj"]
+radius = 27.5
+height = 70.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xql3t"]
+radius = 27.5
+height = 70.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_87vyk"]
+radius = 27.5
+height = 70.0
+
+[node name="Dpad" type="Node2D"]
+script = ExtResource("1_6ctoh")
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 176.0
+offset_bottom = 168.0
+pivot_offset = Vector2(88, 84)
+texture = ExtResource("1_otjp6")
+
+[node name="down" type="TouchScreenButton" parent="TextureRect"]
+position = Vector2(88, 135)
+shape = SubResource("CapsuleShape2D_81rfv")
+action = "move_down"
+visibility_mode = 1
+
+[node name="up" type="TouchScreenButton" parent="TextureRect"]
+position = Vector2(88, 32)
+shape = SubResource("CapsuleShape2D_l78cj")
+action = "move_up"
+visibility_mode = 1
+
+[node name="left" type="TouchScreenButton" parent="TextureRect"]
+position = Vector2(35, 84)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xql3t")
+action = "move_left"
+visibility_mode = 1
+
+[node name="right" type="TouchScreenButton" parent="TextureRect"]
+position = Vector2(142, 84)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_87vyk")
+action = "move_right"
+visibility_mode = 1
