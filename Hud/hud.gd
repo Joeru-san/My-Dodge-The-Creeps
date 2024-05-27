@@ -49,14 +49,14 @@ func on_pause_button_pressed():
 		$PauseButton.text = "▶️"
 		$ColorRect.show()
 	else:
-		if OS.has_feature("android") or OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
+		if OS.has_feature("android") or OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("web") or OS.has_feature("mobile"):
 			$Pause.hide()
 		pause_game.emit()
 		$PauseButton.text = "||"
 		$ColorRect.hide()
 
 func _on_start_button_pressed():
-	if OS.has_feature("android") or OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
+	if OS.has_feature("android") or OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("web") or OS.has_feature("mobile"):
 		$Dpad.show()
 	$StartButton.hide()
 	$PauseButton.show()
