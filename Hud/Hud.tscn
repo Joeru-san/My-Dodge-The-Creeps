@@ -133,6 +133,9 @@ theme_override_font_sizes/font_size = 22
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Dpad" parent="." instance=ExtResource("3_fsl3c")]
+visible = false
+
 [node name="VirtualJoystick" parent="." instance=ExtResource("3_v0ubw")]
 visible = false
 anchors_preset = 7
@@ -143,14 +146,10 @@ offset_top = -300.0
 offset_right = 150.0
 offset_bottom = 0.0
 grow_horizontal = 2
-visibility_mode = 1
 action_left = "move_left"
 action_right = "move_right"
 action_up = "move_up"
 action_down = "move_down"
-
-[node name="Dpad" parent="." instance=ExtResource("3_fsl3c")]
-visible = false
 
 [node name="Pause" parent="." instance=ExtResource("4_d4pd5")]
 visible = false

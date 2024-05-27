@@ -18,3 +18,17 @@ func _process(delta):
 		$TextureRect.texture = load("res://Dpad/assets/Right_Dpad.png")
 	else:
 		$TextureRect.texture = load("res://Dpad/assets/Base_Dpad.png")
+
+func deactivate():
+	hide()
+	set_process(false)
+	set_physics_process(false)
+	set_process_unhandled_input(false)
+	set_process_input(false)
+
+func activate():
+	show()
+	set_process(true)
+	set_physics_process(true)
+	set_process_unhandled_input(true)
+	set_process_input(true)

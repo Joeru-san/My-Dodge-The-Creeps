@@ -3,7 +3,8 @@ extends CanvasLayer
 # Notifica la scena main che il bottone è stato premuto
 signal start_game
 signal pause_game
-@export var pause_state : bool = false
+var joystick_enabled : bool = false
+var pause_state : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +24,7 @@ func show_game_over(latest_score):
 		$Dpad.hide()
 		$VirtualJoystick.hide()
 	$PauseButton.hide()
+	$Pause.hide()
 	show_message("Game Over")
 	# Aspetta fin quando il WaitTimer ha finito
 	await $MessageTimer.timeout
@@ -57,7 +59,11 @@ func on_pause_button_pressed():
 
 func _on_start_button_pressed():
 	if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile") or OS.has_feature("android"):
-		$Dpad.show()
+		if joystick_enabled:
+			$VirtualJoystick.show()
+			$Dpad.deactivate()
+		else:
+			$Dpad.show()
 	$StartButton.hide()
 	$PauseButton.show()
 	$PowerUpLabel.text = ""
@@ -67,9 +73,13 @@ func _on_message_timer_timeout():
 	$Message.hide()
 
 func _on_pause_dpad():
+	$VirtualJoystick.deactivate()
 	$VirtualJoystick.hide()
 	$Dpad.show()
+	$Dpad.activate()
 
 func _on_pause_joystick():
+	$VirtualJoystick.activate()
 	$VirtualJoystick.show()
 	$Dpad.hide()
+	joystick_enabled = true
