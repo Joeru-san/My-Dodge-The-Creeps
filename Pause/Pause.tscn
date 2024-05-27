@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4gxaj4ksibr1"]
+
+[ext_resource type="Script" path="res://Pause/Pause.gd" id="1_50kar"]
+[ext_resource type="FontFile" uid="uid://d3h3s6o76vd26" path="res://fonts/Xolonium-Regular.ttf" id="1_ijmfa"]
+
+[node name="Pause" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_50kar")
+
+[node name="DpadCheck" type="CheckButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -74.5
+offset_right = 68.0
+offset_bottom = -27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ijmfa")
+theme_override_font_sizes/font_size = 32
+button_pressed = true
+keep_pressed_outside = true
+text = "Dpad"
+
+[node name="JoystickCheck" type="CheckButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -23.5
+offset_right = 95.0
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ijmfa")
+theme_override_font_sizes/font_size = 32
+text = "Joystick"
+
+[connection signal="pressed" from="DpadCheck" to="." method="_on_dpad_check_pressed"]
+[connection signal="pressed" from="JoystickCheck" to="." method="_on_joystick_check_pressed"]

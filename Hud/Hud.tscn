@@ -1,8 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://c32ykqst1f7w6"]
+[gd_scene load_steps=10 format=3 uid="uid://c32ykqst1f7w6"]
 
 [ext_resource type="Script" path="res://Hud/hud.gd" id="1_p5vf4"]
 [ext_resource type="FontFile" uid="uid://d3h3s6o76vd26" path="res://fonts/Xolonium-Regular.ttf" id="2_nhqbm"]
 [ext_resource type="PackedScene" uid="uid://mn8yr4v804ww" path="res://Dpad/Dpad.tscn" id="3_fsl3c"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_v0ubw"]
+[ext_resource type="PackedScene" uid="uid://b4gxaj4ksibr1" path="res://Pause/Pause.tscn" id="4_d4pd5"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_itdi7"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_cvadm"]
+events = [SubResource("InputEventAction_itdi7")]
 
 [sub_resource type="InputEventKey" id="InputEventKey_vtau7"]
 device = -1
@@ -10,12 +18,6 @@ keycode = 4194325
 
 [sub_resource type="Shortcut" id="Shortcut_ckc6f"]
 events = [SubResource("InputEventKey_vtau7")]
-
-[sub_resource type="InputEventAction" id="InputEventAction_itdi7"]
-action = &"start_game"
-
-[sub_resource type="Shortcut" id="Shortcut_cvadm"]
-events = [SubResource("InputEventAction_itdi7")]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_p5vf4")
@@ -61,22 +63,6 @@ text = "Dodge the creeps!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
-
-[node name="PauseButton" type="Button" parent="."]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 160.0
-offset_top = 12.0
-offset_right = 232.0
-offset_bottom = 76.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_nhqbm")
-theme_override_font_sizes/font_size = 40
-shortcut = SubResource("Shortcut_ckc6f")
-text = "||"
-icon_alignment = 1
 
 [node name="StartButton" type="Button" parent="."]
 custom_minimum_size = Vector2(200, 100)
@@ -147,9 +133,46 @@ theme_override_font_sizes/font_size = 22
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="VirtualJoystick" parent="." instance=ExtResource("3_v0ubw")]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = -300.0
+offset_right = 150.0
+offset_bottom = 0.0
+grow_horizontal = 2
+visibility_mode = 1
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
+
 [node name="Dpad" parent="." instance=ExtResource("3_fsl3c")]
 visible = false
 
-[connection signal="pressed" from="PauseButton" to="." method="on_pause_button_pressed"]
+[node name="Pause" parent="." instance=ExtResource("4_d4pd5")]
+visible = false
+
+[node name="PauseButton" type="Button" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 160.0
+offset_top = 12.0
+offset_right = 232.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_nhqbm")
+theme_override_font_sizes/font_size = 40
+shortcut = SubResource("Shortcut_ckc6f")
+text = "||"
+icon_alignment = 1
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
+[connection signal="dpad" from="Pause" to="." method="_on_pause_dpad"]
+[connection signal="joystick" from="Pause" to="." method="_on_pause_joystick"]
+[connection signal="pressed" from="PauseButton" to="." method="on_pause_button_pressed"]

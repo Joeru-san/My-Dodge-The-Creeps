@@ -19,6 +19,10 @@ func show_message(text):
 	$MessageTimer.start()
 	
 func show_game_over(latest_score):
+	if OS.has_feature("android") or OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
+		$Dpad.hide()
+		$VirtualJoystick.hide()
+	$PauseButton.hide()
 	show_message("Game Over")
 	# Aspetta fin quando il WaitTimer ha finito
 	await $MessageTimer.timeout
@@ -31,9 +35,6 @@ func show_game_over(latest_score):
 	# Facciamo un timer one shot, cioè che non è un nodo e verrà chiamato solo quando partirà il game over
 	# In questo modo non ci facciamo un nodo in più
 	await get_tree().create_timer(1.0).timeout
-	if OS.has_feature("android") or OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
-		$Dpad.hide()
-	$PauseButton.hide()
 	$StartButton.show()
 
 func update_score(score):
@@ -41,15 +42,19 @@ func update_score(score):
 	
 func on_pause_button_pressed():
 	pause_state = !pause_state
-	if pause_state == true:
+	if pause_state:
+		if OS.has_feature("android") or OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
+			$Pause.show()
 		pause_game.emit()
 		$PauseButton.text = "▶️"
 		$ColorRect.show()
 	else:
+		if OS.has_feature("android") or OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
+			$Pause.hide()
 		pause_game.emit()
 		$PauseButton.text = "||"
 		$ColorRect.hide()
-	
+
 func _on_start_button_pressed():
 	if OS.has_feature("android") or OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
 		$Dpad.show()
@@ -60,3 +65,11 @@ func _on_start_button_pressed():
 
 func _on_message_timer_timeout():
 	$Message.hide()
+
+func _on_pause_dpad():
+	$VirtualJoystick.hide()
+	$Dpad.show()
+
+func _on_pause_joystick():
+	$VirtualJoystick.show()
+	$Dpad.hide()
