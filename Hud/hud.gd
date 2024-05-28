@@ -45,17 +45,21 @@ func update_score(score):
 func on_pause_button_pressed():
 	pause_state = !pause_state
 	if pause_state:
-		if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile") or OS.has_feature("android"):
-			$Pause.show()
 		pause_game.emit()
 		$PauseButton.text = "▶️"
+		$Pause.show()
 		$ColorRect.show()
-	else:
 		if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile") or OS.has_feature("android"):
-			$Pause.hide()
+			$Pause/InputLabel.show()
+		else:
+			$Pause/InputLabel.hide()
+	else:
 		pause_game.emit()
 		$PauseButton.text = "||"
+		$Pause.hide()
 		$ColorRect.hide()
+		if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile") or OS.has_feature("android"):
+			$Pause.hide()
 
 func _on_start_button_pressed():
 	if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile") or OS.has_feature("android"):
@@ -83,3 +87,9 @@ func _on_pause_joystick():
 	$VirtualJoystick.show()
 	$Dpad.hide()
 	joystick_enabled = true
+
+func _on_pause_keyboard():
+	$VirtualJoystick.hide()
+	$VirtualJoystick.deactivate()
+	$Dpad.hide()
+	$Dpad.deactivate()

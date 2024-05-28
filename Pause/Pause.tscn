@@ -14,7 +14,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_50kar")
 
-[node name="DpadCheck" type="CheckButton" parent="."]
+[node name="InputLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.5
+offset_top = -196.0
+offset_right = 130.5
+offset_bottom = -152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ijmfa")
+theme_override_font_sizes/font_size = 36
+text = "Input settings"
+
+[node name="DpadCheck" type="CheckButton" parent="InputLabel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -22,9 +39,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -68.0
-offset_top = -74.5
+offset_top = 15.5
 offset_right = 68.0
-offset_bottom = -27.5
+offset_bottom = 62.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_ijmfa")
@@ -33,7 +50,7 @@ button_pressed = true
 keep_pressed_outside = true
 text = "Dpad"
 
-[node name="JoystickCheck" type="CheckButton" parent="."]
+[node name="JoystickCheck" type="CheckButton" parent="InputLabel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,14 +58,50 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -95.0
-offset_top = -23.5
+offset_top = 50.5
 offset_right = 95.0
-offset_bottom = 23.5
+offset_bottom = 97.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_ijmfa")
 theme_override_font_sizes/font_size = 32
 text = "Joystick"
 
-[connection signal="pressed" from="DpadCheck" to="." method="_on_dpad_check_pressed"]
-[connection signal="pressed" from="JoystickCheck" to="." method="_on_joystick_check_pressed"]
+[node name="AudioLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -63.0
+offset_right = 137.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ijmfa")
+theme_override_font_sizes/font_size = 36
+text = "Audio settings"
+
+[node name="AudioCheck" type="CheckButton" parent="AudioLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.5
+offset_top = 17.5
+offset_right = 72.5
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ijmfa")
+theme_override_font_sizes/font_size = 32
+button_pressed = true
+text = "Audio"
+
+[connection signal="pressed" from="InputLabel/DpadCheck" to="." method="_on_dpad_check_pressed"]
+[connection signal="pressed" from="InputLabel/JoystickCheck" to="." method="_on_joystick_check_pressed"]
+[connection signal="pressed" from="AudioLabel/AudioCheck" to="." method="_on_audio_check_pressed"]
