@@ -21,8 +21,8 @@ func show_message(text):
 	
 func show_game_over(latest_score):
 	if OS.has_feature("android") or OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
-		$Dpad.hide()
-		$VirtualJoystick.hide()
+		$Input/Dpad.hide()
+		$Input/VirtualJoystick.hide()
 	$PauseButton.hide()
 	$Pause.hide()
 	show_message("Game Over")
@@ -50,6 +50,7 @@ func on_pause_button_pressed():
 		$Pause.show()
 		$ColorRect.show()
 		$Message.hide()
+		$Input.hide()
 		if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile") or OS.has_feature("android"):
 			$Pause/InputLabel.show()
 		else:
@@ -59,16 +60,17 @@ func on_pause_button_pressed():
 		$PauseButton.text = "||"
 		$Pause.hide()
 		$ColorRect.hide()
+		$Input.show()
 		if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile") or OS.has_feature("android"):
 			$Pause.hide()
 
 func _on_start_button_pressed():
 	if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile") or OS.has_feature("android"):
 		if joystick_enabled:
-			$VirtualJoystick.show()
-			$Dpad.deactivate()
+			$Input/VirtualJoystick.show()
+			$Input/Dpad.deactivate()
 		else:
-			$Dpad.show()
+			$Input/Dpad.show()
 	$StartButton.hide()
 	$PauseButton.show()
 	$PowerUpLabel.text = ""
@@ -78,19 +80,19 @@ func _on_message_timer_timeout():
 	$Message.hide()
 
 func _on_pause_dpad():
-	$VirtualJoystick.deactivate()
-	$VirtualJoystick.hide()
-	$Dpad.show()
-	$Dpad.activate()
+	$Input/VirtualJoystick.deactivate()
+	$Input/VirtualJoystick.hide()
+	$Input/Dpad.show()
+	$Input/Dpad.activate()
 
 func _on_pause_joystick():
-	$VirtualJoystick.activate()
-	$VirtualJoystick.show()
-	$Dpad.hide()
+	$Input/VirtualJoystick.activate()
+	$Input/VirtualJoystick.show()
+	$Input/Dpad.hide()
 	joystick_enabled = true
 
 func _on_pause_keyboard():
-	$VirtualJoystick.hide()
-	$VirtualJoystick.deactivate()
-	$Dpad.hide()
-	$Dpad.deactivate()
+	$Input/VirtualJoystick.hide()
+	$Input/VirtualJoystick.deactivate()
+	$Input/Dpad.hide()
+	$Input/Dpad.deactivate()

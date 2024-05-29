@@ -19,14 +19,32 @@ height = 70.0
 radius = 27.5
 height = 70.0
 
-[node name="Dpad" type="Node2D"]
+[node name="Dpad" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 script = ExtResource("1_6ctoh")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 192.0
-offset_bottom = 184.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -184.0
+offset_right = 96.0
+grow_horizontal = 2
+grow_vertical = 0
 pivot_offset = Vector2(88, 84)
 texture = ExtResource("2_r8303")
+metadata/_edit_use_anchors_ = true
 
 [node name="down" type="TouchScreenButton" parent="TextureRect"]
 position = Vector2(96, 149)
