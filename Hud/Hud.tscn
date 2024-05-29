@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://c32ykqst1f7w6"]
+[gd_scene load_steps=11 format=3 uid="uid://c32ykqst1f7w6"]
 
 [ext_resource type="Script" path="res://Hud/hud.gd" id="1_p5vf4"]
 [ext_resource type="FontFile" uid="uid://d3h3s6o76vd26" path="res://fonts/Xolonium-Regular.ttf" id="2_nhqbm"]
 [ext_resource type="PackedScene" uid="uid://mn8yr4v804ww" path="res://Dpad/Dpad.tscn" id="3_fsl3c"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_v0ubw"]
 [ext_resource type="PackedScene" uid="uid://b4gxaj4ksibr1" path="res://Pause/Pause.tscn" id="4_d4pd5"]
+[ext_resource type="PackedScene" uid="uid://beocm7dy66p6i" path="res://PopupDialog/PopupDialog.tscn" id="6_npget"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_itdi7"]
 action = &"start_game"
@@ -169,6 +170,9 @@ theme_override_font_sizes/font_size = 40
 shortcut = SubResource("Shortcut_ckc6f")
 text = "||"
 icon_alignment = 1
+
+[node name="PopupDialog" parent="." instance=ExtResource("6_npget")]
+visible = false
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

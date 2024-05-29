@@ -25,3 +25,7 @@ func _on_dpad_check_pressed():
 func _on_audio_check_pressed():
 	var music_bus = AudioServer.get_bus_index("Master")
 	AudioServer.set_bus_mute(music_bus, not AudioServer.is_bus_mute(music_bus))
+
+
+func _on_about_me_button_pressed():
+	OS.shell_open("https://github.com/Joeru-san")

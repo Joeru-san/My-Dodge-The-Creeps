@@ -49,6 +49,7 @@ func on_pause_button_pressed():
 		$PauseButton.text = "▶️"
 		$Pause.show()
 		$ColorRect.show()
+		$Message.hide()
 		if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile") or OS.has_feature("android"):
 			$Pause/InputLabel.show()
 		else:

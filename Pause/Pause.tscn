@@ -102,6 +102,24 @@ theme_override_font_sizes/font_size = 32
 button_pressed = true
 text = "Audio"
 
+[node name="AboutMeButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -90.0
+offset_right = 58.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_ijmfa")
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+
 [connection signal="pressed" from="InputLabel/DpadCheck" to="." method="_on_dpad_check_pressed"]
 [connection signal="pressed" from="InputLabel/JoystickCheck" to="." method="_on_joystick_check_pressed"]
 [connection signal="pressed" from="AudioLabel/AudioCheck" to="." method="_on_audio_check_pressed"]
+[connection signal="pressed" from="AboutMeButton" to="." method="_on_about_me_button_pressed"]
