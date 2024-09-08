@@ -5,6 +5,9 @@ signal pause_game
 var joystick_enabled : bool = false
 var pause_state : bool = false
 
+var play_icon = preload("res://Pause/play.png")
+var pause_icon = preload("res://Pause/pause.png")
+
 func _ready():
 	pass
 
@@ -40,7 +43,7 @@ func on_pause_button_pressed():
 	pause_state = !pause_state
 	if pause_state:
 		pause_game.emit()
-		$PauseButton.text = "▶️"
+		$PauseButton.icon = play_icon
 		$Pause.show()
 		$ColorRect.show()
 		$Message.hide()
@@ -51,7 +54,7 @@ func on_pause_button_pressed():
 			$Pause/InputLabel.hide()
 	else:
 		pause_game.emit()
-		$PauseButton.text = "||"
+		$PauseButton.icon = pause_icon
 		$Pause.hide()
 		$ColorRect.hide()
 		$Input.show()

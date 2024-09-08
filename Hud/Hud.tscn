@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c32ykqst1f7w6"]
+[gd_scene load_steps=12 format=3 uid="uid://c32ykqst1f7w6"]
 
 [ext_resource type="Script" path="res://Hud/hud.gd" id="1_p5vf4"]
 [ext_resource type="PackedScene" uid="uid://mn8yr4v804ww" path="res://Dpad/Dpad.tscn" id="3_fsl3c"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_v0ubw"]
 [ext_resource type="FontFile" uid="uid://c0ly34a7s7kwa" path="res://fonts/Black-Baron Gothic.otf" id="4_26kbr"]
 [ext_resource type="PackedScene" uid="uid://b4gxaj4ksibr1" path="res://Pause/Pause.tscn" id="4_d4pd5"]
+[ext_resource type="Texture2D" uid="uid://4702wxi8s4d7" path="res://Pause/pause.png" id="6_ktjyk"]
 [ext_resource type="PackedScene" uid="uid://beocm7dy66p6i" path="res://PopupDialog/PopupDialog.tscn" id="6_npget"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_itdi7"]
@@ -182,7 +183,7 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("4_26kbr")
 theme_override_font_sizes/font_size = 40
 shortcut = SubResource("Shortcut_ckc6f")
-text = "||"
+icon = ExtResource("6_ktjyk")
 icon_alignment = 1
 
 [node name="PopupDialog" parent="." instance=ExtResource("6_npget")]
