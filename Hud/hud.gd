@@ -1,16 +1,13 @@
 extends CanvasLayer
 
-# Notifica la scena main che il bottone è stato premuto
 signal start_game
 signal pause_game
 var joystick_enabled : bool = false
 var pause_state : bool = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
@@ -26,7 +23,6 @@ func show_game_over(latest_score):
 	$PauseButton.hide()
 	$Pause.hide()
 	show_message("Game Over")
-	# Aspetta fin quando il WaitTimer ha finito
 	await $MessageTimer.timeout
 	
 	$LastScore.text = str(latest_score)
@@ -34,8 +30,6 @@ func show_game_over(latest_score):
 	$Message.text = "Dodge the Creeps"
 	$Message.show()
 	
-	# Facciamo un timer one shot, cioè che non è un nodo e verrà chiamato solo quando partirà il game over
-	# In questo modo non ci facciamo un nodo in più
 	await get_tree().create_timer(1.0).timeout
 	$StartButton.show()
 

@@ -2,30 +2,82 @@ extends Node
 
 @export var mob_scene: PackedScene
 @export var powerup_scene: PackedScene
+
+var music_tracks = [
+	"res://art/music/music_fx_battle_music_1.wav",
+	"res://art/music/music_fx_battle_music_2.wav",
+	"res://art/music/music_fx_battle_music_3.wav",
+	"res://art/music/music_fx_battle_music_4.wav"
+]
+
 var score
 
 var popup_panel
 
+func _set_pillar_tiles(x, y):
+	var tiles = [
+		Vector2i(22, 10), Vector2i(22, 11), Vector2i(22, 12), Vector2i(22, 13), Vector2i(22, 14), Vector2i(22, 15),
+		Vector2i(23, 10), Vector2i(23, 11), Vector2i(23, 12), Vector2i(23, 13), Vector2i(23, 14), Vector2i(23, 15)
+	]
+	var tiles_offset = [0, 1, 2, 3, 4, 5]
+	
+	for offset in tiles_offset:
+		$TileMap.set_cell(2, Vector2i(x, y + offset), 1, tiles[offset])
+		$TileMap.set_cell(2, Vector2i(x + 1, y + offset), 1, tiles[offset + 6])
+		
+	var overlay_tiles = [
+		Vector2i(22, 12), Vector2i(22, 13), Vector2i(22, 14), Vector2i(22, 15),
+		Vector2i(23, 12), Vector2i(23, 13), Vector2i(23, 14), Vector2i(23, 15),
+		Vector2i(24, 12), Vector2i(24, 13), Vector2i(24, 14), Vector2i(24, 15)
+	]
+	
+	for offset in range(3, 7):
+		$TileMap.set_cell(0, Vector2i(x, y + offset-1), 3, overlay_tiles[offset - 3])
+		$TileMap.set_cell(0, Vector2i(x + 1, y + offset-1), 3, overlay_tiles[offset + 1])
+		$TileMap.set_cell(0, Vector2i(x + 2, y + offset-1), 3, overlay_tiles[offset + 5])
+
+func _drawing_pillars_left(y_cells):
+	for i in range(0, y_cells.size(), 6):
+		_set_pillar_tiles(1, 3 + i)
+
+func _drawing_pillars_right(y_cells, no_of_x_cells):
+	for i in range(0, y_cells.size(), 6):
+		_set_pillar_tiles(no_of_x_cells - 3, 3 + i)
+
 func _ready():
 	var screen_size = get_viewport().get_visible_rect().size
 	$MobPath.curve.clear_points()
-	$MobPath.curve.add_point(Vector2(0,0))
-	$MobPath.curve.add_point(Vector2(screen_size.x, 0))
-	$MobPath.curve.add_point(Vector2(screen_size.x, screen_size.y))
-	$MobPath.curve.add_point(Vector2(0, screen_size.y))
-	$MobPath.curve.add_point(Vector2(0, 0))
+	$MobPath.curve.add_point(Vector2(70, 70))
+	$MobPath.curve.add_point(Vector2(screen_size.x - 30, 30))
+	$MobPath.curve.add_point(Vector2(screen_size.x - 30, screen_size.y - 30))
+	$MobPath.curve.add_point(Vector2(20, screen_size.y - 30))
+	$MobPath.curve.add_point(Vector2(40, 40))
 	
 	$PowerUpPath.curve.clear_points()
 	$PowerUpPath.curve.add_point(Vector2(10, 0))
-	$PowerUpPath.curve.add_point(Vector2(screen_size.x-10,0))
-
-func _process(delta):
-	pass
+	$PowerUpPath.curve.add_point(Vector2(screen_size.x - 10, 0))
 	
+	var no_of_y_cells = ceil(screen_size.y / $TileMap.tile_set.tile_size.y)
+	var y_cells = range(0, no_of_y_cells)
+	var no_of_x_cells = ceil(screen_size.x / $TileMap.tile_set.tile_size.x)
+	
+	_drawing_pillars_left(y_cells)
+	if OS.has_feature("web_linuxbsd") or OS.has_feature("web_macos") or OS.has_feature("web_windows"):
+		no_of_x_cells-=1
+	_drawing_pillars_right(y_cells, no_of_x_cells)
+	
+	var random_index = randi() % music_tracks.size()
+	var selected_track = music_tracks[random_index]
+	
+	$Music.stream = load(selected_track)
+
 func _notification(what):
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		$HUD/PopupDialog.show()
-
+	
+func _process(delta):
+	pass
+	
 func game_over():
 	$Music.stop()
 	$DeathSound.play()
@@ -74,25 +126,21 @@ func pause_game():
 		get_tree().paused = false
 
 func _on_mob_timer_timeout():
+	$MobTimer.wait_time = max(0.1, 0.6 - (score / 10) * 0.03)
+	
 	var mob = mob_scene.instantiate()
+	
+	mob.velocity.x += (score * 30) / 90
 	
 	var mob_spawn_location = $MobPath / MobSpawnLocation
 	mob_spawn_location.progress_ratio = randf()
 	
-	var direction = mob_spawn_location.rotation + PI / 2
-	
+	print($MobTimer.wait_time)
+
 	mob.position = mob_spawn_location.position
-	
-	direction += randf_range(-PI / 4, PI / 4)
-	mob.rotation = direction
-	
-	var velocity = Vector2(randf_range(175.0, 350.0), 0.0)
-	velocity.x += (score*20) / 90
-	
-	mob.linear_velocity = velocity.rotated(direction)
-	
 	add_child(mob)
-	
+
+
 func _on_power_up_timer_timeout():
 	var powerup = powerup_scene.instantiate()
 	

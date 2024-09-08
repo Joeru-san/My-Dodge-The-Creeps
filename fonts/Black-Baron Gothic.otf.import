@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://c0ly34a7s7kwa"
+path="res://.godot/imported/Black-Baron Gothic.otf-f65b0a275173050caabcbe654d3bc400.fontdata"
+
+[deps]
+
+source_file="res://fonts/Black-Baron Gothic.otf"
+dest_files=["res://.godot/imported/Black-Baron Gothic.otf-f65b0a275173050caabcbe654d3bc400.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

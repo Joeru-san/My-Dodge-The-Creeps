@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4gxaj4ksibr1"]
 
 [ext_resource type="Script" path="res://Pause/Pause.gd" id="1_50kar"]
-[ext_resource type="FontFile" uid="uid://d3h3s6o76vd26" path="res://fonts/Xolonium-Regular.ttf" id="1_ijmfa"]
+[ext_resource type="FontFile" uid="uid://c0ly34a7s7kwa" path="res://fonts/Black-Baron Gothic.otf" id="2_352n7"]
 
 [node name="Pause" type="Control"]
 layout_mode = 3
@@ -27,7 +27,7 @@ offset_right = 130.5
 offset_bottom = -152.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_ijmfa")
+theme_override_fonts/font = ExtResource("2_352n7")
 theme_override_font_sizes/font_size = 36
 text = "Input settings"
 
@@ -44,7 +44,7 @@ offset_right = 68.0
 offset_bottom = 62.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_ijmfa")
+theme_override_fonts/font = ExtResource("2_352n7")
 theme_override_font_sizes/font_size = 32
 button_pressed = true
 keep_pressed_outside = true
@@ -63,7 +63,7 @@ offset_right = 95.0
 offset_bottom = 97.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_ijmfa")
+theme_override_fonts/font = ExtResource("2_352n7")
 theme_override_font_sizes/font_size = 32
 text = "Joystick"
 
@@ -80,7 +80,7 @@ offset_right = 137.0
 offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_ijmfa")
+theme_override_fonts/font = ExtResource("2_352n7")
 theme_override_font_sizes/font_size = 36
 text = "Audio settings"
 
@@ -97,7 +97,7 @@ offset_right = 72.5
 offset_bottom = 64.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_ijmfa")
+theme_override_fonts/font = ExtResource("2_352n7")
 theme_override_font_sizes/font_size = 32
 button_pressed = true
 text = "Audio"
@@ -115,7 +115,7 @@ offset_right = 63.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("1_ijmfa")
+theme_override_fonts/font = ExtResource("2_352n7")
 theme_override_font_sizes/font_size = 32
 text = "Credits"
 

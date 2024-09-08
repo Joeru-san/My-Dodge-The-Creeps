@@ -1,15 +1,15 @@
 [gd_scene load_steps=7 format=3 uid="uid://bld03l4w2uyhp"]
 
 [ext_resource type="Script" path="res://PowerUp/PowerUp.gd" id="1_2ggcq"]
-[ext_resource type="Texture2D" uid="uid://cod4j1e1unpxq" path="res://art/shield_texture.png" id="2_ub5hp"]
-[ext_resource type="Texture2D" uid="uid://536i4fvu8raw" path="res://art/speed.png" id="3_68tvv"]
-[ext_resource type="Texture2D" uid="uid://c04nfukvd18w4" path="res://art/time.png" id="3_pf0tb"]
+[ext_resource type="Texture2D" uid="uid://3ids16bd3npd" path="res://PowerUp/speed.png" id="2_enayk"]
+[ext_resource type="Texture2D" uid="uid://bhlbqjb4oomco" path="res://PowerUp/shield.png" id="3_px34l"]
+[ext_resource type="Texture2D" uid="uid://cg7m8v7qg8t41" path="res://PowerUp/time.png" id="4_w14bx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_df4cd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_68tvv")
+"texture": ExtResource("2_enayk")
 }],
 "loop": true,
 "name": &"fast",
@@ -17,7 +17,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ub5hp")
+"texture": ExtResource("3_px34l")
 }],
 "loop": true,
 "name": &"shield",
@@ -25,7 +25,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_pf0tb")
+"texture": ExtResource("4_w14bx")
 }],
 "loop": true,
 "name": &"time",
@@ -33,23 +33,23 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ty51"]
-radius = 40.0
+radius = 24.0
 
 [node name="PowerUp" type="RigidBody2D" groups=["powerup"]]
+z_index = 3
 position = Vector2(264, 144)
 collision_mask = 0
 gravity_scale = 0.2
 script = ExtResource("1_2ggcq")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(64.775, 48)
-scale = Vector2(0.291636, 0.301178)
+position = Vector2(64, 80)
+scale = Vector2(0.36557, 0.368688)
 sprite_frames = SubResource("SpriteFrames_df4cd")
-animation = &"fast"
+animation = &"shield"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(64, 48)
+position = Vector2(64, 80)
 shape = SubResource("CircleShape2D_4ty51")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

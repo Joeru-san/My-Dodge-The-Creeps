@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://c32ykqst1f7w6"]
 
 [ext_resource type="Script" path="res://Hud/hud.gd" id="1_p5vf4"]
-[ext_resource type="FontFile" uid="uid://d3h3s6o76vd26" path="res://fonts/Xolonium-Regular.ttf" id="2_nhqbm"]
 [ext_resource type="PackedScene" uid="uid://mn8yr4v804ww" path="res://Dpad/Dpad.tscn" id="3_fsl3c"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_v0ubw"]
+[ext_resource type="FontFile" uid="uid://c0ly34a7s7kwa" path="res://fonts/Black-Baron Gothic.otf" id="4_26kbr"]
 [ext_resource type="PackedScene" uid="uid://b4gxaj4ksibr1" path="res://Pause/Pause.tscn" id="4_d4pd5"]
 [ext_resource type="PackedScene" uid="uid://beocm7dy66p6i" path="res://PopupDialog/PopupDialog.tscn" id="6_npget"]
 
@@ -72,7 +72,7 @@ offset_left = -158.5
 offset_right = 156.5
 offset_bottom = 78.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_nhqbm")
+theme_override_fonts/font = ExtResource("4_26kbr")
 theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 1
@@ -90,7 +90,7 @@ offset_right = 239.0
 offset_bottom = 16.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_nhqbm")
+theme_override_fonts/font = ExtResource("4_26kbr")
 theme_override_font_sizes/font_size = 64
 text = "Dodge the creeps!"
 horizontal_alignment = 1
@@ -110,7 +110,7 @@ offset_right = 100.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("2_nhqbm")
+theme_override_fonts/font = ExtResource("4_26kbr")
 theme_override_font_sizes/font_size = 64
 shortcut = SubResource("Shortcut_cvadm")
 text = "Start"
@@ -130,7 +130,7 @@ offset_top = -0.0800018
 offset_right = 66.84
 offset_bottom = 22.92
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_nhqbm")
+theme_override_fonts/font = ExtResource("4_26kbr")
 text = "Last Score:"
 horizontal_alignment = 1
 
@@ -144,7 +144,7 @@ offset_left = -5.00003
 offset_top = -0.0800018
 offset_right = 35.0
 offset_bottom = 22.92
-theme_override_fonts/font = ExtResource("2_nhqbm")
+theme_override_fonts/font = ExtResource("4_26kbr")
 text = "0
 "
 horizontal_alignment = 1
@@ -161,7 +161,7 @@ offset_top = -63.0
 offset_right = 128.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("2_nhqbm")
+theme_override_fonts/font = ExtResource("4_26kbr")
 theme_override_font_sizes/font_size = 22
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -179,7 +179,7 @@ offset_top = 12.0
 offset_right = 232.0
 offset_bottom = 76.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_nhqbm")
+theme_override_fonts/font = ExtResource("4_26kbr")
 theme_override_font_sizes/font_size = 40
 shortcut = SubResource("Shortcut_ckc6f")
 text = "||"

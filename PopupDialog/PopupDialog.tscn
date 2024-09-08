@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://beocm7dy66p6i"]
 
-[ext_resource type="FontFile" uid="uid://d3h3s6o76vd26" path="res://fonts/Xolonium-Regular.ttf" id="1_i21wa"]
 [ext_resource type="Script" path="res://PopupDialog/PopupDialog.gd" id="1_mw7qc"]
+[ext_resource type="FontFile" uid="uid://c0ly34a7s7kwa" path="res://fonts/Black-Baron Gothic.otf" id="2_kw4jn"]
 
 [node name="PopupDialog" type="Control"]
 layout_mode = 3
@@ -37,7 +37,7 @@ offset_top = 8.0
 offset_right = 84.0
 offset_bottom = 51.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_i21wa")
+theme_override_fonts/font = ExtResource("2_kw4jn")
 theme_override_font_sizes/font_size = 28
 text = "Are you sure you 
 want to exit?"
@@ -54,7 +54,7 @@ offset_top = 10.5
 offset_right = 130.0
 offset_bottom = 64.5
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_i21wa")
+theme_override_fonts/font = ExtResource("2_kw4jn")
 theme_override_font_sizes/font_size = 28
 text = "Confirm"
 
@@ -68,7 +68,7 @@ offset_top = 11.0
 offset_right = 302.0
 offset_bottom = 65.0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_i21wa")
+theme_override_fonts/font = ExtResource("2_kw4jn")
 theme_override_font_sizes/font_size = 28
 text = "Cancel"
 

@@ -7,18 +7,17 @@ signal fast
 @export var speed = 400
 var screen_size
 var can_move = true
+var velocity
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if not can_move:
 		return
 	
-	var velocity = Vector2.ZERO # Il vettore di movimento del giocatore
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 			velocity.x += 1
 	if Input.is_action_pressed("move_left"):
@@ -41,9 +40,6 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.flip_v = false
 		$AnimatedSprite2D.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		$AnimatedSprite2D.animation = "up"
-		$AnimatedSprite2D.flip_v = velocity.y > 0
 
 func _on_body_entered(body):
 	if body.get_groups()[0] == "mobs":
@@ -52,8 +48,6 @@ func _on_body_entered(body):
 		await get_tree().create_timer(1.0).timeout
 		hide()
 		can_move = true
-		# Dobbiamo deferenziarlo poiché non possiamo cambiare le proprietà di una fisica in una callback fisica
-		# Praticamente disabilitiamo le collisioni in modo che non triggeriamo di nuovo hti
 		$CollisionShape2D.set_deferred("disabled", true)
 	elif body.get_groups()[0] == "powerup":
 		var powerup = body.get_node("AnimatedSprite2D")
@@ -74,5 +68,6 @@ func _on_body_entered(body):
 
 func start(pos):
 	position = pos
+	$AnimatedSprite2D.animation = "walk"
 	show()
 	$CollisionShape2D.disabled = false
